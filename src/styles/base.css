@@ -1,0 +1,36 @@
+@tailwind base;
+
+.dark {
+  color-scheme: dark;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+
+abbr[title] {
+  text-decoration: none;
+}
+
+.cursor-newtab {
+  cursor: url('/images/new-tab.png') 10 10, pointer;
+}
+
+.layout {
+  /* 1100px */
+  max-width: 68.75rem;
+  @apply mx-auto w-11/12;
+}
+
+.bg-dark a.custom-link {
+  @apply border-gray-200 hover:border-gray-200/0;
+}
+
+/* Class to adjust with sticky footer */
+.min-h-main {
+  @apply min-h-[calc(100vh-56px)];
+}

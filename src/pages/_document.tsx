@@ -14,7 +14,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang='en'>
+      <Html lang='en' className='dark'>
         <Head>
           <link
             rel='preload'
@@ -23,8 +23,57 @@ class MyDocument extends Document {
             type='font/woff2'
             crossOrigin='anonymous'
           />
+          <meta name='theme-color' content='#ffffff' />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                try {
+                  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark')
+                    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0B1120')
+                  } else {
+                    document.documentElement.classList.remove('dark')
+                  }
+                } catch (_) {}
+              `,
+            }}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              try {
+                var colors = [
+                  'rose','pink','fuchsia','purple','violet',
+                  'indigo','blue','sky','cyan', 'teal',
+                  'emerald',
+                  'green',
+                  'lime',
+                  'yellow',
+                  'amber',
+                  'orange',
+                  'red',
+                  'slate',
+                  'gray',
+                  'zinc',
+                  'neutral',
+                  'stone',
+                ];
+                var today = new Date();
+                var currentYear = today.getFullYear().toString();
+                var hasTimestamp = today - new Date(currentYear);
+                var hasDays = Math.ceil(hasTimestamp / 86400000);
+                var colorClass = colors[hasDays % colors.length];
+                if (localStorage.color) {
+                  document.documentElement.classList.add(localStorage.color)
+                } else {
+                  document.documentElement.classList.add(colorClass)
+                }
+              } catch (_) {}
+            `,
+            }}
+          />
         </Head>
-        <body>
+        <body className='bg-white text-slate-500 dark:bg-slate-900 dark:text-slate-400'>
           <Main />
           <NextScript />
         </body>

@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
+  // https://nextjs.org/docs/advanced-features/output-file-tracing#automatically-copying-traced-files
+  output: 'standalone',
+  // i18n: {
+  //   locales: ['en-US', 'zh-CN'],
+  //   defaultLocale: 'en-US',
+  // },
   eslint: {
     dirs: ['src'],
   },
@@ -7,11 +13,9 @@ module.exports = {
   reactStrictMode: true,
 
   // Uncoment to add domain whitelist
-  // images: {
-  //   domains: [
-  //     'res.cloudinary.com',
-  //   ],
-  // },
+  images: {
+    domains: ['img.paulzzh.com'],
+  },
 
   // SVGR
   webpack(config) {

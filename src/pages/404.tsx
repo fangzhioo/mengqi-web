@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { RiAlarmWarningFill } from 'react-icons/ri';
 
-import Layout from '@/components/layout/Layout';
 import ArrowLink from '@/components/links/ArrowLink';
 import Seo from '@/components/Seo';
+
+import Layout from '@/layouts/BlankLayout';
 
 export default function NotFoundPage() {
   return (
@@ -11,7 +12,7 @@ export default function NotFoundPage() {
       <Seo templateTitle='Not Found' />
 
       <main>
-        <section className='bg-white'>
+        <section>
           <div className='layout flex min-h-screen flex-col items-center justify-center text-center text-black'>
             <RiAlarmWarningFill
               size={60}

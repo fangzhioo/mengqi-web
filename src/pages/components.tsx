@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import * as React from 'react';
 
 import Button from '@/components/buttons/Button';
-import Layout from '@/components/layout/Layout';
 import ArrowLink from '@/components/links/ArrowLink';
 import ButtonLink from '@/components/links/ButtonLink';
 import PrimaryLink from '@/components/links/PrimaryLink';
@@ -12,6 +11,8 @@ import UnstyledLink from '@/components/links/UnstyledLink';
 import NextImage from '@/components/NextImage';
 import Seo from '@/components/Seo';
 import Skeleton from '@/components/Skeleton';
+
+import Layout from '@/layouts/BlankLayout';
 
 type Color = typeof colorList[number];
 
@@ -41,7 +42,7 @@ export default function ComponentsPage() {
               mode === 'dark' ? 'text-white' : 'text-black'
             )}
           >
-            <h1>Built-in Components</h1>
+            <h1 className='bg-white dark:bg-slate-700'>Built-in Components</h1>
             <ArrowLink direction='left' className='mt-2' href='/'>
               Back to Home
             </ArrowLink>
