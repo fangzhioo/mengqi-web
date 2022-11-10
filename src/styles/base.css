@@ -4,6 +4,10 @@
   color-scheme: dark;
 }
 
+.dark img {
+  @apply brightness-90;
+}
+
 html {
   height: 100%;
 }

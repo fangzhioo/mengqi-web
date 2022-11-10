@@ -1,12 +1,7 @@
 @tailwind utilities;
 
 .animated-underline {
-  background-image: linear-gradient(#33333300, #33333300),
-    linear-gradient(
-      to right,
-      var(--color-primary-400),
-      var(--color-primary-500)
-    );
+  background-image: linear-gradient(#33333300, #33333300), linear-gradient(to right, var(--color-primary-400), var(--color-primary-500));
   background-size: 100% 2px, 0 2px;
   background-position: 100% 100%, 0 100%;
   background-repeat: no-repeat;
@@ -20,4 +15,88 @@
 .animated-underline:hover,
 .animated-underline:focus-visible {
   background-size: 0 2px, 100% 2px;
+}
+
+@layer utilities {
+  .is-sticky {
+    @apply fixed inset-x-0 !top-0 w-full animate-fadeInDown bg-white/95 text-slate-700 shadow backdrop-blur transition-all duration-300 ease-linear dark:bg-slate-900/75 dark:text-slate-300;
+  }
+
+  .thumb {
+    @apply z-10 translate-y-full transition-all duration-1000;
+  }
+
+  /*  offcanvas menu style */
+  .offcanvas.offcanvas-open {
+    @apply translate-x-0 transform;
+  }
+
+  .offcanvas .offcanvas-menu ul li {
+    @apply relative;
+  }
+
+  .offcanvas .offcanvas-menu ul li .menu-expand {
+    @apply absolute top-0 right-0 z-10 h-11 w-6 cursor-pointer bg-transparent;
+  }
+  .offcanvas .offcanvas-menu ul li .menu-expand::before,
+  .offcanvas .offcanvas-menu ul li .menu-expand::after {
+    @apply absolute top-1/2 left-0 z-10 h-[1px] w-4 bg-black transition-all duration-500 ease-in-out;
+    content: '';
+  }
+  .offcanvas .offcanvas-menu ul li .menu-expand::after {
+    @apply rotate-90 transform;
+  }
+  .offcanvas .offcanvas-menu ul li.active > .menu-expand::after {
+    @apply rotate-0 scale-75  transform;
+  }
+
+  /* offcanvas menu style ENd */
+
+  /* hero slider style start  */
+
+  .hero-slider .swiper-slide-active .sub_title {
+    @apply animate-fadeInLeft1;
+  }
+  .hero-slider .swiper-slide-active .title {
+    @apply animate-fadeInLeft2;
+  }
+  .hero-slider .swiper-slide-active .text {
+    @apply animate-fadeInLeft3;
+  }
+  .hero-slider .swiper-slide-active .hero_btn {
+    @apply animate-fadeInLeft4;
+  }
+  .hero-slider .swiper-slide-active .hero_info {
+    @apply animate-fadeInLeft5;
+  }
+  .hero-slider .swiper-slide-active .counter-animate {
+    @apply animate-fadeInLeft5;
+  }
+
+  .hero-slider .swiper-slide-active .hero_image {
+    @apply animate-fadeInRight;
+  }
+
+  /* hero slider style end  */
+
+  /* swiper style start  */
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    @apply !text-[12px];
+  }
+
+  .swiper-slide-visible .thumb {
+    @apply translate-y-0 delay-500;
+  }
+
+  .swiper-slide .review-shadow-card {
+    @apply absolute top-[100%] left-0 right-[calc(30px)] z-10 translate-y-full border-l-[20px] border-secondary bg-white transition-all duration-1000 sm:right-[calc(100%_-_470px)];
+  }
+
+  .swiper-slide-visible .review-shadow-card {
+    @apply top-[60%] -translate-y-1/2 shadow-[0px_2px_15px_rgba(0,0,0,0.15)] delay-500 sm:top-[55%];
+  }
+
+  /* swiper style end  */
 }

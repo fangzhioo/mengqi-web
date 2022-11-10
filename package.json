@@ -18,11 +18,14 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@types/parallax-js": "^3.1.0",
     "clsx": "^1.2.1",
     "next": "^12.3.0",
+    "parallax-js": "^3.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
+    "swiper": "^8.4.4",
     "tailwind-merge": "^1.6.0"
   },
   "devDependencies": {
@@ -55,7 +58,7 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "eslint --max-warnings=0",
+      "eslint",
       "prettier -w"
     ],
     "**/*.{json,css,scss,md}": [

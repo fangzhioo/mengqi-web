@@ -5,9 +5,8 @@ import { useRouter } from 'next/router';
 const defaultMeta = {
   title: 'MongQi',
   siteName: 'MongQi',
-  description:
-    'Cute pets, cute babies, cute girls. There are always cute things to heal you and me.',
-  /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
+  description: 'Cute pets, cute babies, cute girls. There are always cute things to heal you and me.',
+  /** Without additional '/' on the end, e.g. https://github.com */
   url: 'https://mengqi.love',
   type: 'website',
   robots: 'follow, index',
@@ -15,7 +14,7 @@ const defaultMeta = {
    * No need to be filled, will be populated with openGraph function
    * If you wish to use a normal image, just specify the path below
    */
-  image: 'https://tsnext-tw.thcl.dev/images/large-og.png',
+  image: 'https://mengqi.love/images/large-og.png',
 };
 
 type SeoProps = {
@@ -23,15 +22,18 @@ type SeoProps = {
   templateTitle?: string;
 } & Partial<typeof defaultMeta>;
 
+/**
+ * SEO相关内容
+ * @param props
+ * @returns
+ */
 export default function Seo(props: SeoProps) {
   const router = useRouter();
   const meta = {
     ...defaultMeta,
     ...props,
   };
-  meta['title'] = props.templateTitle
-    ? `${props.templateTitle} | ${meta.siteName}`
-    : meta.title;
+  meta['title'] = props.templateTitle ? `${props.templateTitle} | ${meta.siteName}` : meta.title;
 
   // Use siteName if there is templateTitle
   // but show full title if there is none
@@ -65,16 +67,8 @@ export default function Seo(props: SeoProps) {
       {meta.date && (
         <>
           <meta property='article:published_time' content={meta.date} />
-          <meta
-            name='publish_date'
-            property='og:publish_date'
-            content={meta.date}
-          />
-          <meta
-            name='author'
-            property='article:author'
-            content='Theodorus Clarence'
-          />
+          <meta name='publish_date' property='og:publish_date' content={meta.date} />
+          <meta name='author' property='article:author' content='TongRen' />
         </>
       )}
 
@@ -83,10 +77,7 @@ export default function Seo(props: SeoProps) {
         <link key={linkProps.href} {...linkProps} />
       ))}
       <meta name='msapplication-TileColor' content='#ffffff' />
-      <meta
-        name='msapplication-TileImage'
-        content='/favicon/ms-icon-144x144.png'
-      />
+      <meta name='msapplication-TileImage' content='/favicon/ms-icon-144x144.png' />
     </Head>
   );
 }

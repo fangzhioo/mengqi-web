@@ -5,8 +5,24 @@ const { fontFamily } = require('tailwindcss/defaultTheme');
 module.exports = {
   darkMode: 'class',
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  safelist: ['is-sticky'],
   theme: {
+    screens: {
+      xs: '320px',
+      sm: '576px',
+      md: '768px',
+      lg: '992px',
+      xl: '1280px',
+      '2xl': '1536px',
+      '3xl': '1920px',
+    },
     extend: {
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: '15px',
+        },
+      },
       fontFamily: {
         primary: ['Inter', ...fontFamily.sans],
       },
@@ -23,15 +39,16 @@ module.exports = {
           700: 'rgb(var(--tw-color-primary-700) / <alpha-value>)',
           800: 'rgb(var(--tw-color-primary-800) / <alpha-value>)',
           900: 'rgb(var(--tw-color-primary-900) / <alpha-value>)',
+          DEFAULT: 'rgb(var(--tw-color-primary-700) / <alpha-value>)',
         },
+        secondary: '#FF6500',
         dark: '#222222',
       },
       keyframes: {
         flicker: {
           '0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100%': {
             opacity: 0.99,
-            filter:
-              'drop-shadow(0 0 1px rgba(252, 211, 77)) drop-shadow(0 0 15px rgba(245, 158, 11)) drop-shadow(0 0 1px rgba(252, 211, 77))',
+            filter: 'drop-shadow(0 0 1px rgba(252, 211, 77)) drop-shadow(0 0 15px rgba(245, 158, 11)) drop-shadow(0 0 1px rgba(252, 211, 77))',
           },
           '20%, 21.999%, 63%, 63.999%, 65%, 69.999%': {
             opacity: 0.4,
@@ -46,12 +63,84 @@ module.exports = {
             backgroundPosition: '700px 0',
           },
         },
+
+        fadeInLeft: {
+          '0%': {
+            opacity: '0',
+            transform: 'translate3d(-100px, 0, 0)',
+          },
+          to: {
+            opacity: '1',
+            transform: 'none',
+          },
+        },
+        fadeInDown: {
+          '0%': {
+            opacity: 0,
+            transform: 'translate3d(0, -100px, 0)',
+          },
+          to: {
+            opacity: '1',
+            transform: 'none',
+          },
+        },
+        fadeInRight: {
+          '0%': {
+            opacity: 0,
+            transform: 'translate3d(100px,0 , 0)',
+          },
+          to: {
+            opacity: '1',
+            transform: 'none',
+          },
+        },
+        animateSpin: {
+          '0%': {
+            transform: 'rotate(0deg)',
+          },
+          to: {
+            transform: 'rotate(360deg)',
+          },
+        },
       },
       animation: {
         flicker: 'flicker 3s linear infinite',
         shimmer: 'shimmer 1.3s linear infinite',
+
+        fadeInLeft1: 'fadeInLeft 1.2s ease-in-out',
+        fadeInLeft2: 'fadeInLeft 1.4s ease-in-out',
+        fadeInLeft3: 'fadeInLeft 1.6s ease-in-out',
+        fadeInLeft4: 'fadeInLeft 1.8s ease-in-out',
+        fadeInLeft5: 'fadeInLeft 2s ease-in-out',
+        fadeInLeft6: 'fadeInLeft 2.3s ease-in-out',
+        fadeInLeft7: 'fadeInLeft 2.6s ease-in-out',
+        fadeInRight: 'fadeInRight 1.8s ease-in-out',
+        fadeInDown: 'fadeInDown 0.7s ease-in-out 0s normal none 1 running',
+        animateSpin: 'animateSpin 5s linear infinite',
       },
     },
   },
-  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    function ({ addComponents }) {
+      addComponents({
+        '.container': {
+          maxWidth: '100%',
+          '@screen sm': {
+            maxWidth: '570px',
+          },
+          '@screen md': {
+            maxWidth: '750px',
+          },
+          '@screen lg': {
+            maxWidth: '990px',
+          },
+          '@screen xl': {
+            maxWidth: '1200px',
+          },
+        },
+      });
+    },
+  ],
 };

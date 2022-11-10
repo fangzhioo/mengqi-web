@@ -16,14 +16,10 @@ export function openGraph({
 }: OpenGraphType): string {
   const ogLogo = encodeURIComponent(logo);
   const ogSiteName = encodeURIComponent(siteName.trim());
-  const ogTemplateTitle = templateTitle
-    ? encodeURIComponent(templateTitle.trim())
-    : undefined;
+  const ogTemplateTitle = templateTitle ? encodeURIComponent(templateTitle.trim()) : undefined;
   const ogDesc = encodeURIComponent(description.trim());
 
-  return `https://og.<your-domain>/api/general?siteName=${ogSiteName}&description=${ogDesc}&logo=${ogLogo}${
-    ogTemplateTitle ? `&templateTitle=${ogTemplateTitle}` : ''
-  }`;
+  return `https://og.<your-domain>/api/general?siteName=${ogSiteName}&description=${ogDesc}&logo=${ogLogo}${ogTemplateTitle ? `&templateTitle=${ogTemplateTitle}` : ''}`;
 }
 
 export function getFromLocalStorage(key: string): string | null {

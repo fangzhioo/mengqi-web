@@ -14,7 +14,7 @@ module.exports = {
 
   // Uncoment to add domain whitelist
   images: {
-    domains: ['img.paulzzh.com'],
+    domains: ['img.paulzzh.com', '8.142.142.4'],
   },
 
   // SVGR
